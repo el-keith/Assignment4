@@ -12,11 +12,11 @@ public class Pokemon {
  private Random rand = new Random(10);
 
 
- public Pokemon(String name, double maxHealth, String type){
+ public Pokemon(String name, double maxHealth, String type, ArrayList<SkillMove> moves){
    this.name = name;
    this.maxHealth = maxHealth;
    this.type = type;
-   getMoves();
+   this.moves = moves;
  }
 
     public double getCurrentHealth() {
@@ -53,22 +53,25 @@ public class Pokemon {
 
  public ArrayList<SkillMove> getMoves() {
 
-
   return moves;
  }
 
- public void setMoves(ArrayList<SkillMove> moves) {
+ public Pokemon(ArrayList<SkillMove> moves) {
+  this.moves = moves;
+ }
 
+ public void setMoves(ArrayList<SkillMove> moves) {
 
   this.moves = moves;
  }
 
  public void attack(Pokemon p) {
-  int rand = getRandomInt(moves.size());
-//   if (!isMoveMissed(moves.get(rand).getMissRate())) {
-//
-//   }
+   int rand = getRandomInt(moves.size());
+   SkillMove newSkillMove = moves.get(rand);
+   if (!p.isMoveMissed(newSkillMove)) {
+    this.setCurrentHealth(this.currentHealth - newSkillMove.getDmg());
 
+   }
  }
 
 

@@ -1,9 +1,9 @@
 public class SkillMove {
 
-  private String type;
-  private String name;
-  private double dmg;
-  private double missRate;
+  private String type = " ";
+  private String name = " ";
+  private double dmg = 0.0;
+  private double missRate  = 0.0;
 
 
   
